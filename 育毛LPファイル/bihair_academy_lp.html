@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美髪育成アカデミー｜頭皮から変わる、6ヶ月の美髪プログラム</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sage:#a8c19b;--sage-mid:#c3d9bb;--sage-light:#dcecd5;--sage-pale:#f0f7ec;
+  --blush:#d9b8ad;--blush-light:#edddd8;--blush-pale:#faf4f1;
+  --cream:#faf8f4;--tan:#c8b89a;--tan-light:#e8dfd0;--tan-pale:#f5f0e8;
+  --brown:#6e5844;--dark:#3a2e26;--mid:#695a4e;--light:#9a8878;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden;line-height:1.7;}
+
+/* FIXED HEADER */
+.fh{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(250,248,244,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(168,193,155,.25);padding:12px 32px;display:flex;align-items:center;justify-content:space-between;transform:translateY(-100%);transition:transform .3s;}
+.fh.on{transform:translateY(0);}
+.fh-logo{font-family:'Noto Serif JP',serif;font-weight:300;font-size:15px;letter-spacing:.12em;color:var(--dark);}
+.fh-btn{background:var(--sage);color:#fff;font-size:13px;letter-spacing:.08em;padding:10px 24px;border-radius:50px;text-decoration:none;box-shadow:0 4px 14px rgba(168,193,155,.35);transition:background .2s;}
+.fh-btn:hover{background:var(--sage-mid);}
+
+/* HERO */
+.hero{min-height:100svh;background:linear-gradient(145deg,#f7f2ed 0%,var(--cream) 45%,var(--sage-pale) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 24px 72px;position:relative;overflow:hidden;}
+.hero-ring{position:absolute;border-radius:50%;border:1px solid rgba(168,193,155,.2);}
+.hero-ring-1{width:500px;height:500px;top:-150px;right:-150px;}
+.hero-ring-2{width:300px;height:300px;bottom:-80px;left:-80px;border-color:rgba(217,184,173,.2);}
+.hero-badge{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:.22em;color:var(--light);margin-bottom:18px;opacity:0;animation:up .7s .1s forwards;}
+.hero-title{font-family:'Noto Serif JP',serif;font-weight:300;font-size:clamp(28px,5.5vw,52px);line-height:1.6;text-align:center;letter-spacing:.06em;color:var(--dark);opacity:0;animation:up .7s .25s forwards;}
+.hero-title strong{color:var(--brown);font-weight:700;}
+.hero-lead{margin-top:20px;font-size:15px;color:var(--mid);text-align:center;line-height:2;letter-spacing:.08em;opacity:0;animation:up .7s .4s forwards;}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;margin:40px 0;opacity:0;animation:up .7s .55s forwards;}
+.hero-stat{text-align:center;}
+.hero-stat-num{font-family:'Cormorant Garamond',serif;font-size:42px;color:var(--sage);font-weight:400;line-height:1;}
+.hero-stat-num span{font-size:18px;}
+.hero-stat-label{font-size:12px;color:var(--light);letter-spacing:.1em;margin-top:4px;}
+.hero-divider{width:1px;height:50px;background:var(--tan-light);}
+.hero-cta{display:inline-block;background:linear-gradient(135deg,var(--sage),#7fb572);color:#fff;font-size:16px;letter-spacing:.12em;padding:18px 56px;border-radius:50px;text-decoration:none;font-weight:500;box-shadow:0 8px 28px rgba(127,181,114,.35);transition:transform .2s,box-shadow .2s;opacity:0;animation:up .7s .7s forwards;}
+.hero-cta:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(127,181,114,.45);}
+.hero-note{margin-top:12px;font-size:12px;color:var(--light);letter-spacing:.08em;opacity:0;animation:up .7s .8s forwards;}
+
+/* SECTION BASE */
+section{padding:80px 24px;}
+.s-label{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:.22em;color:var(--sage);text-align:center;margin-bottom:10px;}
+.s-title{font-family:'Noto Serif JP',serif;font-weight:300;font-size:clamp(20px,3.5vw,30px);text-align:center;line-height:1.7;color:var(--dark);letter-spacing:.06em;margin-bottom:48px;}
+.s-title em{font-style:normal;border-bottom:2px solid var(--blush-light);padding-bottom:2px;}
+.inner{max-width:900px;margin:0 auto;}
+
+/* PROBLEM */
+.sec-problem{background:var(--blush-pale);}
+.prob-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:820px;margin:0 auto 40px;}
+.prob-card{background:#fff;border-radius:16px;padding:24px 20px;border-top:3px solid var(--blush);box-shadow:0 3px 12px rgba(0,0,0,.04);}
+.prob-card .pi{font-size:26px;margin-bottom:10px;}
+.prob-card p{font-size:14px;color:var(--mid);line-height:1.85;}
+.root-cause{max-width:620px;margin:0 auto;background:#fff;border-radius:20px;padding:32px 28px;box-shadow:0 4px 20px rgba(0,0,0,.06);text-align:center;}
+.rc-title{font-size:14px;color:var(--light);letter-spacing:.1em;margin-bottom:20px;}
+.rc-chain{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;}
+.rc-box{background:var(--blush-pale);border:1px solid var(--blush-light);border-radius:10px;padding:10px 16px;font-size:13px;color:var(--mid);}
+.rc-box.hl{background:linear-gradient(135deg,var(--sage-pale),var(--blush-pale));border-color:var(--sage-mid);font-weight:500;color:var(--dark);font-size:14px;}
+.rc-arrow{color:var(--tan);font-size:18px;}
+
+/* WHY */
+.sec-why{background:var(--cream);}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:860px;margin:0 auto;}
+.why-card{background:#fff;border-radius:20px;padding:32px 26px;box-shadow:0 4px 18px rgba(0,0,0,.05);border-bottom:3px solid var(--sage-light);transition:transform .2s;}
+.why-card:hover{transform:translateY(-3px);}
+.why-num{font-family:'Cormorant Garamond',serif;font-size:44px;color:var(--sage-mid);font-weight:300;line-height:1;margin-bottom:12px;}
+.why-card h3{font-family:'Noto Serif JP',serif;font-weight:400;font-size:16px;color:var(--dark);margin-bottom:12px;letter-spacing:.04em;}
+.why-card p{font-size:13px;color:var(--mid);line-height:2;}
+
+/* PLAN */
+.sec-plan{background:var(--sage-pale);}
+.plan-box{max-width:760px;margin:0 auto;background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.08);}
+.plan-head{background:linear-gradient(135deg,var(--sage) 0%,#7fb572 100%);padding:40px 40px 32px;color:#fff;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start;}
+@media(max-width:520px){.plan-head{grid-template-columns:1fr;}}
+.plan-name-ja{font-family:'Noto Serif JP',serif;font-weight:300;font-size:13px;letter-spacing:.2em;opacity:.85;margin-bottom:6px;}
+.plan-price-main{font-family:'Cormorant Garamond',serif;font-size:58px;font-weight:400;line-height:1;}
+.plan-price-main small{font-size:20px;}
+.plan-tax{font-size:12px;opacity:.8;margin-top:4px;}
+.plan-donut{flex-shrink:0;text-align:center;}
+.plan-donut svg{width:120px;height:120px;}
+.donut-label{font-size:11px;opacity:.85;margin-top:6px;}
+.plan-body{padding:32px 40px;}
+.plan-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;}
+@media(max-width:480px){.plan-breakdown{grid-template-columns:1fr;}}
+.pb-item{background:var(--cream);border-radius:14px;padding:18px 20px;}
+.pb-icon{font-size:22px;margin-bottom:8px;}
+.pb-label{font-size:12px;color:var(--light);letter-spacing:.06em;margin-bottom:4px;}
+.pb-val{font-size:20px;font-weight:500;color:var(--dark);}
+.pb-val small{font-size:12px;color:var(--light);}
+.pb-note{font-size:12px;color:var(--mid);margin-top:4px;line-height:1.6;}
+.plan-includes{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;}
+.plan-tag{background:var(--sage-pale);border:1px solid var(--sage-light);color:var(--brown);font-size:12px;padding:7px 16px;border-radius:50px;letter-spacing:.04em;}
+.plan-period{background:var(--tan-pale);border-radius:12px;padding:14px 20px;display:flex;align-items:center;gap:12px;font-size:14px;color:var(--mid);}
+.plan-period strong{color:var(--dark);}
+
+/* TIMELINE */
+.sec-timeline{background:var(--cream);}
+.timeline{max-width:700px;margin:0 auto;position:relative;padding-left:16px;}
+.tl-track{position:absolute;left:48px;top:24px;bottom:24px;width:2px;background:linear-gradient(to bottom,var(--sage-light),var(--tan-light));}
+.tl-item{display:flex;gap:24px;margin-bottom:28px;position:relative;}
+.tl-dot{width:64px;height:64px;border-radius:50%;flex-shrink:0;background:#fff;border:2px solid var(--sage-light);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--sage);position:relative;z-index:1;box-shadow:0 2px 10px rgba(0,0,0,.07);line-height:1.2;text-align:center;}
+.tl-content{background:#fff;border-radius:16px;padding:20px 22px;flex:1;box-shadow:0 3px 12px rgba(0,0,0,.04);}
+.tl-month{font-size:11px;color:var(--sage);letter-spacing:.12em;font-weight:500;margin-bottom:4px;}
+.tl-content h3{font-size:15px;color:var(--dark);font-weight:500;margin-bottom:6px;}
+.tl-content p{font-size:13px;color:var(--mid);line-height:1.85;}
+.tl-badge{display:inline-block;margin-top:8px;background:var(--sage-pale);border-radius:50px;padding:4px 12px;font-size:11px;color:var(--brown);}
+
+/* RESULT */
+.sec-result{background:var(--tan-pale);}
+.result-inner{max-width:700px;margin:0 auto;}
+.result-note{text-align:center;font-size:13px;color:var(--light);margin-bottom:36px;letter-spacing:.06em;}
+.bar-chart{display:flex;flex-direction:column;gap:24px;}
+.bar-row{display:flex;gap:8px;align-items:center;margin-bottom:6px;}
+.bar-row:last-child{margin-bottom:0;}
+.bar-label-s{font-size:11px;color:var(--light);width:60px;flex-shrink:0;}
+.bar-track{background:var(--tan-light);border-radius:50px;height:18px;overflow:hidden;flex:1;}
+.bar-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--sage),#7fb572);width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1);}
+.bar-fill.blush{background:linear-gradient(90deg,var(--blush),#c49a8e);}
+.bar-fill.tan{background:linear-gradient(90deg,var(--tan),#b8a07a);}
+.bar-fill.tan{background:linear-gradient(90deg,var(--tan),#b8a07a);}
+.bar-val{font-size:12px;color:var(--mid);width:38px;flex-shrink:0;text-align:right;}
+.bar-heading{font-size:13px;color:var(--mid);margin-bottom:8px;font-weight:500;}
+.result-disclaimer{text-align:center;font-size:11px;color:var(--light);margin-top:28px;line-height:1.8;}
+
+/* PROFILE */
+.sec-profile{background:var(--blush-pale);}
+.profile-inner{max-width:820px;margin:0 auto;display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start;}
+@media(max-width:640px){.profile-inner{grid-template-columns:1fr;}}
+.profile-photo-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;}
+.profile-photo{width:220px;height:280px;border-radius:20px;background:linear-gradient(145deg,var(--sage-light),var(--blush-light));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:2px dashed var(--tan);color:var(--light);font-size:11px;letter-spacing:.08em;text-align:center;}
+.profile-photo .pi{font-size:36px;opacity:.4;}
+.profile-name-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:var(--brown);}
+.profile-name-jp{font-size:11px;color:var(--light);letter-spacing:.12em;}
+.profile-text h3{font-family:'Noto Serif JP',serif;font-weight:400;font-size:19px;color:var(--dark);margin-bottom:16px;line-height:1.65;letter-spacing:.04em;}
+.profile-text p{font-size:14px;color:var(--mid);line-height:2.1;margin-bottom:20px;}
+.profile-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.profile-tag{background:#fff;border:1px solid var(--sage-mid);color:var(--brown);font-size:12px;padding:6px 14px;border-radius:50px;}
+
+/* TESTIMONIAL */
+.sec-testi{background:var(--cream);}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px;max-width:880px;margin:0 auto;}
+.testi-card{background:#fff;border-radius:20px;padding:28px 24px;box-shadow:0 4px 16px rgba(0,0,0,.05);position:relative;}
+.testi-quote{font-family:'Cormorant Garamond',serif;font-size:72px;color:var(--sage-light);position:absolute;top:8px;left:16px;line-height:1;}
+.testi-text{font-size:14px;color:var(--mid);line-height:2;position:relative;z-index:1;padding-top:20px;}
+.testi-person{margin-top:16px;display:flex;align-items:center;gap:10px;}
+.testi-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--sage-light),var(--blush-light));display:flex;align-items:center;justify-content:center;font-size:16px;}
+.testi-name{font-size:13px;color:var(--dark);font-weight:500;}
+.testi-age{font-size:11px;color:var(--light);}
+.testi-stars{color:#d4a94a;font-size:13px;letter-spacing:.1em;margin-bottom:2px;}
+
+/* FAQ */
+.sec-faq{background:var(--sage-pale);}
+.faq-list{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:12px;}
+.faq-item{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.04);}
+.faq-q{padding:18px 22px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px;color:var(--dark);font-weight:500;letter-spacing:.02em;list-style:none;}
+.faq-q::-webkit-details-marker{display:none;}
+.faq-icon{width:28px;height:28px;border-radius:50%;background:var(--sage-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;transition:transform .3s;color:var(--sage);}
+details[open] .faq-icon{transform:rotate(45deg);}
+.faq-a{padding:0 22px 18px;font-size:13px;color:var(--mid);line-height:2;}
+
+/* FLOW */
+.sec-flow{background:var(--cream);}
+.flow-grid{max-width:640px;margin:0 auto;display:grid;grid-template-columns:64px 1fr;gap:0 20px;align-items:start;}
+.flow-dot{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--sage),#7fb572);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:22px;box-shadow:0 4px 14px rgba(127,181,114,.3);}
+.flow-line{width:2px;height:36px;background:var(--sage-light);margin:4px auto;}
+.flow-sp{height:36px;}
+.flow-content{padding:8px 0 32px;}
+.flow-content h3{font-size:15px;color:var(--dark);font-weight:500;margin-bottom:6px;}
+.flow-content p{font-size:13px;color:var(--mid);line-height:1.9;}
+
+/* CTA */
+.sec-cta{background:linear-gradient(155deg,var(--sage-pale) 0%,var(--blush-pale) 100%);text-align:center;padding:100px 24px;}
+.cta-title{font-family:'Noto Serif JP',serif;font-weight:300;font-size:clamp(22px,4vw,34px);color:var(--dark);line-height:1.7;margin-bottom:36px;letter-spacing:.06em;}
+.cta-title strong{color:var(--brown);font-weight:700;}
+.cta-btn{display:block;max-width:420px;margin:0 auto 20px;background:linear-gradient(135deg,var(--sage),#7fb572);color:#fff;font-size:16px;letter-spacing:.12em;padding:22px 40px;border-radius:50px;text-decoration:none;font-weight:500;box-shadow:0 10px 32px rgba(127,181,114,.4);transition:transform .2s,box-shadow .2s;}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 16px 44px rgba(127,181,114,.5);}
+.cta-trust{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:20px;}
+.cta-trust span{font-size:12px;color:var(--light);display:flex;align-items:center;gap:6px;}
+
+/* FOOTER */
+footer{background:var(--dark);color:rgba(255,255,255,.45);text-align:center;padding:32px 24px;font-size:12px;letter-spacing:.08em;}
+footer a{color:rgba(255,255,255,.55);text-decoration:none;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s;}
+.reveal.on{opacity:1;transform:none;}
+
+@keyframes up{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+
+<header class="fh" id="fh">
+  <div class="fh-logo">美髪育成アカデミー</div>
+  <a href="https://line.me/R/ti/p/%40563lrjeh" class="fh-btn">📱 無料相談はこちら</a>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-ring hero-ring-1"></div>
+  <div class="hero-ring hero-ring-2"></div>
+  <p class="hero-badge">Bi-hair Ikusei Academy</p>
+  <h1 class="hero-title">頭皮から変わる、<br><strong>6ヶ月の美髪プログラム</strong></h1>
+  <p class="hero-lead">美容師歴20年以上のプロが設計した<br>毎月お届けのホームケア×専門サポートで<br>本当の美髪を手に入れる</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">20<span>年以上</span></div>
+      <div class="hero-stat-label">美容師キャリア</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">6<span>ヶ月</span></div>
+      <div class="hero-stat-label">集中プログラム</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">0<span>円</span></div>
+      <div class="hero-stat-label">相談・送料 無料</div>
+    </div>
+  </div>
+  <a href="https://line.me/R/ti/p/%40563lrjeh" class="hero-cta">📱 まずは無料相談をする（LINE）</a>
+  <p class="hero-note">※ LINEで気軽にご相談いただけます</p>
+</section>
+
+<!-- PROBLEM -->
+<section class="sec-problem" id="problem">
+  <p class="s-label reveal">Your Concern</p>
+  <h2 class="s-title reveal">こんなお悩みはありませんか？</h2>
+  <div class="prob-grid">
+    <div class="prob-card reveal"><div class="pi">😔</div><p>抜け毛が増えてきた、<br>生え際・頭頂部が気になる</p></div>
+    <div class="prob-card reveal"><div class="pi">💧</div><p>頭皮がかゆい・フケが<br>止まらない</p></div>
+    <div class="prob-card reveal"><div class="pi">🪞</div><p>髪のコシ・ハリ・ツヤが<br>なくなってきた</p></div>
+    <div class="prob-card reveal"><div class="pi">🛒</div><p>シャンプーや育毛剤を変えても<br>効果を感じられない</p></div>
+  </div>
+  <div class="root-cause reveal" style="margin-top:40px;">
+    <p class="rc-title">▷ その原因、実はすべてここにあります</p>
+    <div class="rc-chain">
+      <div class="rc-box">間違ったケア習慣</div>
+      <div class="rc-arrow">→</div>
+      <div class="rc-box hl">🌿 頭皮環境の乱れ</div>
+      <div class="rc-arrow">→</div>
+      <div class="rc-box">抜け毛・薄毛・<br>頭皮トラブル</div>
+    </div>
+    <p style="margin-top:20px;font-size:14px;color:var(--mid);line-height:1.9;">
+      表面だけのケアでは根本は変わりません。<br>
+      <strong style="color:var(--dark);">頭皮環境を整えること</strong>が、本当の美髪への近道です。
+    </p>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="sec-why">
+  <p class="s-label reveal">Why Choose Us</p>
+  <h2 class="s-title reveal">選ばれる<em>3つの理由</em></h2>
+  <div class="why-grid inner">
+    <div class="why-card reveal">
+      <div class="why-num">01</div>
+      <h3>🌿 あなた専用の商品が届く</h3>
+      <p>毎月、頭皮の状態に合ったホームケア商品をご自宅へお届け。サロンと同じクオリティのケアが毎日続けられます。</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-num">02</div>
+      <h3>💬 20年超のプロが伴走する</h3>
+      <p>美容師として積み上げた専門知識で、あなたの変化を一緒に見届けます。「なんとなくケア」から卒業できます。</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-num">03</div>
+      <h3>📦 続けやすい仕組みがある</h3>
+      <p>月1回のお届けで習慣が自然に身につきます。送料は全額会社負担。忙しい方でも無理なく続けられます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN -->
+<section class="sec-plan" id="plan">
+  <p class="s-label reveal">Subscription Plan</p>
+  <h2 class="s-title reveal">プランのご紹介</h2>
+  <div class="plan-box reveal inner">
+    <div class="plan-head">
+      <div>
+        <p class="plan-name-ja">月額プラン（税込）</p>
+        <div class="plan-price-main">¥22,000<small>/月</small></div>
+        <p class="plan-tax">内消費税 ¥2,000</p>
+      </div>
+      <div class="plan-donut">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="18"/>
+          <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="18"
+            stroke-dasharray="137 165" stroke-linecap="butt"
+            transform="rotate(-90 60 60)"/>
+          <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(217,184,173,.8)" stroke-width="18"
+            stroke-dasharray="165 137" stroke-linecap="butt"
+            transform="rotate(58 60 60)"/>
+          <text x="60" y="56" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.9)" font-family="sans-serif">商品代</text>
+          <text x="60" y="68" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.7)" font-family="sans-serif">サービス</text>
+        </svg>
+      </div>
+    </div>
+    <div class="plan-body">
+      <div class="plan-breakdown">
+        <div class="pb-item">
+          <div class="pb-icon">🌿</div>
+          <div class="pb-label">商品代（税込）</div>
+          <div class="pb-val">¥10,000<small>/月</small></div>
+          <div class="pb-note">毎月のホームケア商品<br>送料：会社負担（無料）</div>
+        </div>
+        <div class="pb-item">
+          <div class="pb-icon">💬</div>
+          <div class="pb-label">サービス料（税込）</div>
+          <div class="pb-val">¥12,000<small>/月</small></div>
+          <div class="pb-note">専門家サポート<br>動画コンテンツ提供</div>
+        </div>
+      </div>
+      <div class="plan-includes">
+        <span class="plan-tag">📦 毎月自宅に配送</span>
+        <span class="plan-tag">🚚 送料無料</span>
+        <span class="plan-tag">📱 LINEサポート</span>
+        <span class="plan-tag">🎬 動画コンテンツ</span>
+        <span class="plan-tag">📊 頭皮チェック</span>
+      </div>
+      <div class="plan-period">📅 <strong>6ヶ月間の継続プログラム</strong>（初回申し込み月から起算）</div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="sec-timeline">
+  <p class="s-label reveal">6-Month Journey</p>
+  <h2 class="s-title reveal">6ヶ月で<em>何が変わるか</em></h2>
+  <div class="timeline inner reveal">
+    <div class="tl-track"></div>
+    <div class="tl-item">
+      <div class="tl-dot">1</div>
+      <div class="tl-content">
+        <div class="tl-month">Month 1 ― スタート</div>
+        <h3>頭皮環境のリセット</h3>
+        <p>初回カウンセリングで現在のお悩みをヒアリング。頭皮チェックシートに回答いただき、現状を把握します。<br>希望者の方には自然に抜け落ちた髪の毛を約10本ご送付いただき、専門機関で<strong>栄養素・頭皮環境レポート</strong>を作成（結果まで約2ヶ月）。</p>
+        <span class="tl-badge">🔬 専門機関分析オプションあり</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="font-size:15px;">2〜3</div>
+      <div class="tl-content">
+        <div class="tl-month">Month 2〜3 ― 商品お届け・変化の兆し</div>
+        <h3>カウンセリング内容に基づいた商品を発送</h3>
+        <p>ヒアリング結果をもとに最適なホームケア商品を選定。毎月ご自宅にお届け（送料無料）します。<br>頭皮のかゆみやフケが落ち着き始め、抜け毛の変化を感じ始める方が多い時期です。</p>
+        <span class="tl-badge">📦 毎月配送スタート</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="font-size:15px;">4〜5</div>
+      <div class="tl-content">
+        <div class="tl-month">Month 4〜5 ― 可視化・実感</div>
+        <h3>毎日の写真投稿で変化を見える化</h3>
+        <p>毎日の写真投稿でボリュームアップや頭皮改善の変化を記録・可視化。専門スタッフが食事・生活環境・髪型のアドバイスも担当します。<br>「コシが戻ってきた」と実感される方が増える時期です。</p>
+        <span class="tl-badge">📸 写真で変化を記録</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">6</div>
+      <div class="tl-content">
+        <div class="tl-month">Month 6 ― ゴール</div>
+        <h3>整った頭皮と美しい髪の完成</h3>
+        <p>6ヶ月で頭皮環境が整い、美髪の土台が完成。栄養素レポートをもとにしたケア習慣も自然と身についています。継続ご希望の方はそのままプログラムを延長できます。</p>
+        <span class="tl-badge">🏆 美髪完成フェーズ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULT -->
+<section class="sec-result">
+  <p class="s-label reveal">Member Results</p>
+  <h2 class="s-title reveal">受講者の<em>変化グラフ</em></h2>
+  <div class="result-inner">
+    <p class="result-note reveal">※ プログラム参加者の自己評価（5段階）の平均値推移</p>
+    <div class="bar-chart reveal">
+      <div>
+        <div class="bar-heading">🌿 頭皮の状態（かゆみ・フケ）</div>
+        <div class="bar-row">
+          <span class="bar-label-s">開始時</span>
+          <div class="bar-track"><div class="bar-fill" data-w="35%"></div></div>
+          <span class="bar-val">2.1/5</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label-s">6ヶ月後</span>
+          <div class="bar-track"><div class="bar-fill" data-w="82%"></div></div>
+          <span class="bar-val">4.1/5</span>
+        </div>
+      </div>
+      <div>
+        <div class="bar-heading">💪 髪のコシ・ハリ感</div>
+        <div class="bar-row">
+          <span class="bar-label-s">開始時</span>
+          <div class="bar-track"><div class="bar-fill blush" data-w="28%"></div></div>
+          <span class="bar-val">1.7/5</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label-s">6ヶ月後</span>
+          <div class="bar-track"><div class="bar-fill blush" data-w="78%"></div></div>
+          <span class="bar-val">3.9/5</span>
+        </div>
+      </div>
+      <div>
+        <div class="bar-heading">😊 ケアへの満足度</div>
+        <div class="bar-row">
+          <span class="bar-label-s">開始時</span>
+          <div class="bar-track"><div class="bar-fill tan" data-w="20%"></div></div>
+          <span class="bar-val">1.2/5</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label-s">6ヶ月後</span>
+          <div class="bar-track"><div class="bar-fill tan" data-w="88%"></div></div>
+          <span class="bar-val">4.4/5</span>
+        </div>
+      </div>
+    </div>
+    <p class="result-disclaimer">※ 個人差があります。効果を保証するものではありません。</p>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<section class="sec-profile" id="profile">
+  <p class="s-label reveal">About the Expert</p>
+  <h2 class="s-title reveal">担当者のご紹介</h2>
+  <div class="profile-inner inner">
+    <div class="profile-photo-wrap reveal">
+      <div class="profile-photo" style="background:none;border:none;padding:0;">
+        <img src="profile.jpg" alt="Takarada プロフィール写真"
+          style="width:220px;height:280px;object-fit:cover;object-position:center top;border-radius:20px;display:block;box-shadow:0 8px 28px rgba(0,0,0,.12);">
+      </div>
+      <div class="profile-name-en">Takarada</div>
+      <div class="profile-name-jp">美髪育成アカデミー 代表</div>
+    </div>
+    <div class="profile-text reveal">
+      <h3>頭皮と髪の悩みを、<br>根本から解決するために。</h3>
+      <p>美容師として20年以上のキャリアの中で、「抜け毛」「薄毛」「頭皮トラブル」に悩むお客様と向き合い続けてきました。<br><br>市販品を試しても変わらない方に共通しているのは、<strong style="color:var(--dark);">「頭皮環境の乱れ」</strong>です。表面的なケアだけでは根本は変わりません。頭皮の状態を正しく理解し、継続的にアプローチすることが本当の美髪への近道だと確信しています。<br><br>美髪育成アカデミーでは、サロンで培った知識とホームケアを組み合わせた6ヶ月プログラムで、一人ひとりの美髪を全力でサポートします。</p>
+      <div class="profile-tags">
+        <span class="profile-tag">✂️ 美容師歴20年以上</span>
+        <span class="profile-tag">🌿 頭皮ケア専門</span>
+        <span class="profile-tag">📹 YouTube配信中</span>
+        <span class="profile-tag">💬 個別カウンセリング対応</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="sec-testi">
+  <p class="s-label reveal">Voice of Members</p>
+  <h2 class="s-title reveal">受講者の声</h2>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">3ヶ月目ごろから抜け毛の量が明らかに減ってきました。毎月商品が届くので続けやすく、LINE相談もすぐ答えてくれて安心して続けられます。</p>
+      <div class="testi-person">
+        <div class="testi-avatar">🌸</div>
+        <div><div class="testi-name">A.Mさん</div><div class="testi-age">40代 女性</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">市販シャンプーを何種類試しても変化がなかったのに、頭皮のかゆみが2ヶ月でほぼなくなりました。もっと早く始めればよかったと思っています。</p>
+      <div class="testi-person">
+        <div class="testi-avatar">🌿</div>
+        <div><div class="testi-name">K.Tさん</div><div class="testi-age">50代 男性</div></div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★☆</div>
+      <p class="testi-text">YouTubeを見て申し込みました。専門家のサポートがあるので安心して続けられます。半年で髪のコシが戻ってきた実感があります！</p>
+      <div class="testi-person">
+        <div class="testi-avatar">🌼</div>
+        <div><div class="testi-name">Y.Hさん</div><div class="testi-age">30代 女性</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec-faq">
+  <p class="s-label reveal">FAQ</p>
+  <h2 class="s-title reveal">よくある<em>ご質問</em></h2>
+  <div class="faq-list">
+    <details class="faq-item reveal">
+      <summary class="faq-q">月額22,000円（税込）の内訳を教えてください<span class="faq-icon">＋</span></summary>
+      <p class="faq-a">商品代 10,000円（税込）＋ サービス料 12,000円（税込）の合計22,000円です。送料は全額会社負担のため、追加費用はかかりません。</p>
+    </details>
+    <details class="faq-item reveal">
+      <summary class="faq-q">髪の毛の分析（専門機関レポート）は必須ですか？<span class="faq-icon">＋</span></summary>
+      <p class="faq-a">いいえ、任意のオプションです。ご希望の方に、自然に抜け落ちた髪の毛を約10本ご送付いただき、専門機関で不足栄養素や頭皮環境のレポートを作成します。結果のご連絡まで約2ヶ月お時間をいただきます。</p>
+    </details>
+    <details class="faq-item reveal">
+      <summary class="faq-q">24時間サポートとはどのようなものですか？<span class="faq-icon">＋</span></summary>
+      <p class="faq-a">チャットボットによる自動案内と、TAKARADA直通LINEによる個別サポートをご用意しています。緊急の場合もLINEにてご連絡いただければ、営業時間内に順次対応いたします。</p>
+    </details>
+    <details class="faq-item reveal">
+      <summary class="faq-q">毎日写真を投稿しないといけませんか？<span class="faq-icon">＋</span></summary>
+      <p class="faq-a">強制ではありません。ただ、変化の可視化のために毎日の写真投稿をお勧めしています。記録が積み重なることで、ご自身でも変化を実感しやすくなります。</p>
+    </details>
+    <details class="faq-item reveal">
+      <summary class="faq-q">食事や生活習慣のアドバイスも受けられますか？<span class="faq-icon">＋</span></summary>
+      <p class="faq-a">はい、美容師をはじめ各専門スタッフが食事・生活環境・髪型のアドバイスを担当します。頭皮ケアだけでなく、トータルな美髪環境づくりをサポートします。</p>
+    </details>
+    <details class="faq-item reveal">
+      <summary class="faq-q">6ヶ月間は必ず続けないといけませんか？<span class="faq-icon">＋</span></summary>
+      <p class="faq-a">基本的には6ヶ月間の継続プログラムです。やむを得ない事情がある場合は個別にご相談をお受けしています。まずはLINEよりご連絡ください。</p>
+    </details>
+    <details class="faq-item reveal">
+      <summary class="faq-q">男性でも利用できますか？<span class="faq-icon">＋</span></summary>
+      <p class="faq-a">はい、男性・女性問わずご利用いただけます。薄毛・抜け毛・頭皮トラブルなど、性別に関係なくサポートします。</p>
+    </details>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="sec-flow" id="flow">
+  <p class="s-label reveal">How to Start</p>
+  <h2 class="s-title reveal">申し込みの<em>流れ</em></h2>
+  <div class="flow-grid reveal">
+
+    <div class="flow-dot">1</div>
+    <div class="flow-content">
+      <h3>📱 LINEに友達登録</h3>
+      <p>下のボタンまたはQRコードからLINE公式アカウントに友達追加。自動でご案内が届きます。</p>
+      <div style="display:flex;align-items:center;gap:16px;margin-top:14px;flex-wrap:wrap;">
+        <a href="https://line.me/R/ti/p/%40563lrjeh"
+          style="display:inline-block;background:linear-gradient(135deg,#a8c19b,#7fb572);color:#fff;font-size:13px;letter-spacing:.08em;padding:10px 24px;border-radius:50px;text-decoration:none;font-weight:500;box-shadow:0 4px 14px rgba(127,181,114,.3);">
+          📱 友だち追加する
+        </a>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <img src="line_qr.png" alt="QR" style="width:56px;height:56px;border-radius:8px;border:1px solid #e8dfd0;">
+          <span style="font-size:11px;color:#9a8878;line-height:1.7;">QRコードで<br>友だち追加<br>ID：@563lrjeh</span>
+        </div>
+      </div>
+    </div>
+    <div class="flow-line"></div><div class="flow-sp"></div>
+
+    <div class="flow-dot">2</div>
+    <div class="flow-content">
+      <h3>💬 初回カウンセリング</h3>
+      <p>現在のお悩み・頭皮環境の現状をヒアリング。改善方法の方針をご提案します。</p>
+    </div>
+    <div class="flow-line"></div><div class="flow-sp"></div>
+
+    <div class="flow-dot">3</div>
+    <div class="flow-content">
+      <h3>🔬 髪の毛分析（希望者のみ）</h3>
+      <p>自然に抜け落ちた髪の毛を約10本ご送付いただきます。専門機関で不足栄養素・頭皮環境レポートを作成（結果まで約2ヶ月）。</p>
+    </div>
+    <div class="flow-line"></div><div class="flow-sp"></div>
+
+    <div class="flow-dot">4</div>
+    <div class="flow-content">
+      <h3>📦 商品お届けスタート（毎月）</h3>
+      <p>カウンセリング内容に基づいた商品を毎月ご自宅に配送（送料無料）。</p>
+    </div>
+    <div class="flow-line"></div><div class="flow-sp"></div>
+
+    <div class="flow-dot">5</div>
+    <div class="flow-content">
+      <h3>📲 24時間サポート＆変化の可視化</h3>
+      <p>チャットボットまたはTAKARADA直通LINEで24時間365日ご案内。毎日の写真投稿でボリュームアップや頭皮改善を記録・見える化します。食事・生活習慣・髪型のアドバイスも専門スタッフが対応。</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec-cta" id="cta">
+  <h2 class="cta-title reveal">今日が、美髪への<br><strong>第一歩になる日。</strong></h2>
+  <a href="https://line.me/R/ti/p/%40563lrjeh" class="cta-btn reveal">📱 無料相談はこちら（LINE）</a>
+  <!-- ↑ LINE公式アカウントのURLに差し替えてください -->
+  <div class="cta-trust reveal">
+    <span>✅ 相談・見積もり無料</span>
+    <span>✅ 強引な営業なし</span>
+    <span>✅ 送料完全無料</span>
+    <span>✅ 6ヶ月の安心サポート</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:8px;font-family:'Noto Serif JP',serif;font-size:14px;color:rgba(255,255,255,.65);">美髪育成アカデミー</p>
+  <p>運営：株式会社 CONI ／ 代表取締役：宝田英貴</p>
+  <p style="margin-top:12px;">
+    <a href="#">プライバシーポリシー</a> ／
+    <a href="tokusho.html">特定商取引法に基づく表記</a>
+  </p>
+  <p style="margin-top:10px;">© 2026 Bi-hair Ikusei Academy. All rights reserved.</p>
+</footer>
+
+<script>
+const fh = document.getElementById('fh');
+window.addEventListener('scroll', () => { fh.classList.toggle('on', window.scrollY > 300); });
+
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);} });
+}, {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.style.width=e.target.dataset.w;barObs.unobserve(e.target);} });
+}, {threshold:0.3});
+document.querySelectorAll('.bar-fill').forEach(b => barObs.observe(b));
+</script>
+</body>
+</html>
