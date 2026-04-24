@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>特定商取引法に基づく表記｜美髪育成アカデミー</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage:       #b5c9a8;
+    --sage-pale:  #edf4e9;
+    --blush-pale: #fdf4f2;
+    --cream:      #faf7f2;
+    --tan:        #d4c4a8;
+    --tan-light:  #efe6d5;
+    --brown:      #7a6452;
+    --dark:       #3d3028;
+    --mid:        #6b5c4e;
+    --light-text: #9c8878;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    background: rgba(250,247,242,0.97);
+    border-bottom: 1px solid rgba(181,201,168,0.3);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--dark);
+    letter-spacing: 0.1em;
+    text-decoration: none;
+  }
+
+  .back-link {
+    font-size: 13px;
+    color: var(--mid);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--brown); }
+
+  /* ===== PAGE HERO ===== */
+  .page-hero {
+    background: linear-gradient(160deg, var(--sage-pale) 0%, var(--cream) 60%, var(--blush-pale) 100%);
+    padding: 64px 24px 48px;
+    text-align: center;
+    border-bottom: 1px solid var(--tan);
+  }
+
+  .page-hero .label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    color: var(--sage);
+    margin-bottom: 12px;
+  }
+
+  .page-hero h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 300;
+    font-size: clamp(20px, 4vw, 30px);
+    color: var(--dark);
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+  }
+
+  /* ===== CONTENT ===== */
+  .content {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 56px 24px 80px;
+  }
+
+  .intro-note {
+    background: var(--sage-pale);
+    border-left: 4px solid var(--sage);
+    border-radius: 0 12px 12px 0;
+    padding: 18px 24px;
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.9;
+    margin-bottom: 48px;
+  }
+
+  /* ===== TABLE ===== */
+  .tokusho-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .tokusho-table tr {
+    border-bottom: 1px solid var(--tan-light);
+  }
+
+  .tokusho-table tr:first-child {
+    border-top: 2px solid var(--sage);
+  }
+
+  .tokusho-table th {
+    width: 200px;
+    padding: 20px 20px 20px 0;
+    vertical-align: top;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--brown);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .tokusho-table td {
+    padding: 20px 0;
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 2;
+    vertical-align: top;
+  }
+
+  .tokusho-table td .placeholder {
+    background: var(--blush-pale);
+    border: 1px dashed #e8c9c0;
+    border-radius: 6px;
+    padding: 4px 12px;
+    color: #c49a90;
+    font-size: 12px;
+    display: inline-block;
+    letter-spacing: 0.05em;
+  }
+
+  .tokusho-table td small {
+    display: block;
+    font-size: 12px;
+    color: var(--light-text);
+    margin-top: 4px;
+  }
+
+  /* ===== SECTION HEADING ===== */
+  .section-heading {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--dark);
+    letter-spacing: 0.08em;
+    margin: 52px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--sage-pale);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-heading::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--sage);
+    flex-shrink: 0;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    padding: 28px 24px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 560px) {
+    .tokusho-table th {
+      width: 120px;
+      font-size: 12px;
+      padding-right: 12px;
+    }
+    .tokusho-table td { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <a href="bihair_academy_lp.html" class="logo">美髪育成アカデミー</a>
+  <a href="bihair_academy_lp.html" class="back-link">← トップページへ戻る</a>
+</header>
+
+<!-- ===== PAGE HERO ===== -->
+<div class="page-hero">
+  <p class="label">Legal Information</p>
+  <h1>特定商取引法に基づく表記</h1>
+</div>
+
+<!-- ===== CONTENT ===== -->
+<div class="content">
+
+  <p class="intro-note">
+    本ページは、特定商取引法第11条の規定に基づき、通信販売に関する事項を表示したものです。<br>
+    ピンク色の箇所（<span style="background:#fdf4f2;border:1px dashed #e8c9c0;border-radius:4px;padding:2px 8px;font-size:11px;color:#c49a90;">※ 要記入</span>）は、正式公開前に実際の情報に書き換えてください。
+  </p>
+
+  <!-- 販売業者情報 -->
+  <h2 class="section-heading">販売業者情報</h2>
+  <table class="tokusho-table">
+    <tr>
+      <th>販売業者名</th>
+      <td>株式会社 CONI</td>
+    </tr>
+    <tr>
+      <th>代表者名</th>
+      <td>宝田英貴</td>
+    </tr>
+    <tr>
+      <th>所在地</th>
+      <td>
+        大阪府吹田市千里山東2-27-3
+        <small>（請求があった場合は遅滞なく開示します）</small>
+      </td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td>
+        お問い合わせはメールまたはLINEにてお受けしております
+        <small>受付時間：平日 10:00〜18:00（土日祝除く）</small>
+      </td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="244d4a424b644f4b4a4d0a4e54">[email&#160;protected]</a></td>
+    </tr>
+  </table>
+
+  <!-- 商品・サービス -->
+  <h2 class="section-heading">販売商品・サービス</h2>
+  <table class="tokusho-table">
+    <tr>
+      <th>サービス名</th>
+      <td>美髪育成アカデミー オンラインサブスクリプションプログラム</td>
+    </tr>
+    <tr>
+      <th>内容</th>
+      <td>頭皮・育毛ケア専門家によるオンラインサポート、毎月のホームケア商品配送、動画コンテンツの提供</td>
+    </tr>
+    <tr>
+      <th>販売価格</th>
+      <td>
+        月額 20,000円（税別）／ 22,000円（税込）<br>
+        <small>内訳：商品代 10,000円 ＋ サービス料 10,000円（各税別）</small>
+      </td>
+    </tr>
+    <tr>
+      <th>契約期間</th>
+      <td>6ヶ月間（初回申し込み月から起算）</td>
+    </tr>
+    <tr>
+      <th>商品の配送</th>
+      <td>
+        毎月1回、ご登録の住所へ配送します。<br>
+        <small>送料：会社負担（送料無料）</small>
+      </td>
+    </tr>
+    <tr>
+      <th>お届けの目安</th>
+      <td>お申し込み確認後、翌月初旬より順次発送</td>
+    </tr>
+  </table>
+
+  <!-- 支払い -->
+  <h2 class="section-heading">お支払いについて</h2>
+  <table class="tokusho-table">
+    <tr>
+      <th>支払方法</th>
+      <td>クレジットカード（VISA・Mastercard・JCB・AMEX）／銀行振込</td>
+    </tr>
+    <tr>
+      <th>支払時期</th>
+      <td>
+        クレジットカードの場合：毎月末日締め・翌月引き落とし<br>銀行振込の場合：請求書発行後10日以内にお振り込みください
+      </td>
+    </tr>
+    <tr>
+      <th>遅延損害金</th>
+      <td>年14.6%</td>
+    </tr>
+  </table>
+
+  <!-- キャンセル・返金 -->
+  <h2 class="section-heading">キャンセル・返品・返金について</h2>
+  <table class="tokusho-table">
+    <tr>
+      <th>キャンセルポリシー</th>
+      <td>
+        6ヶ月の継続契約のため、契約期間中の途中解約はお受けできません。<br>
+        やむを得ない事情がある場合は個別にご相談ください。
+      </td>
+    </tr>
+    <tr>
+      <th>返品・交換</th>
+      <td>
+        商品に明らかな欠陥・破損があった場合に限り、到着後7日以内にご連絡いただければ対応いたします。<br>
+        お客様都合による返品・返金はお受けできません。
+      </td>
+    </tr>
+    <tr>
+      <th>クーリングオフ</th>
+      <td>
+        通信販売には法律上のクーリングオフ制度は適用されません。<br>
+        ただし、サービスの性質上、お申し込み後8日以内にお申し出いただいた場合は個別に対応いたします。
+      </td>
+    </tr>
+  </table>
+
+  <!-- その他 -->
+  <h2 class="section-heading">その他</h2>
+  <table class="tokusho-table">
+    <tr>
+      <th>動作環境</th>
+      <td>オンラインコンテンツの視聴にはインターネット接続環境が必要です（スマートフォン・PC対応）</td>
+    </tr>
+    <tr>
+      <th>個人情報の取扱い</th>
+      <td>取得した個人情報は、サービスの提供・商品発送・ご連絡のみに使用し、第三者への提供はいたしません。</td>
+    </tr>
+    <tr>
+      <th>お問い合わせ</th>
+      <td>
+        LINEまたはメールにてお問い合わせください。<br>LINE ID：@563lrjeh（<a href="https://line.me/R/ti/p/%40563lrjeh" style="color:var(--brown);">友だち追加はこちら</a>）<br>メール：info@koni.jp<br>
+        <small>返信は平日営業時間内（10:00〜18:00）となります。</small>
+      </td>
+    </tr>
+  </table>
+
+  <p style="margin-top:48px; font-size:12px; color:var(--light-text); text-align:right; letter-spacing:0.05em;">
+    最終更新日：2026年4月（公開時に更新してください）
+  </p>
+
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p style="margin-bottom:8px; font-family:'Noto Serif JP',serif; font-size:14px; color:rgba(255,255,255,0.65);">美髪育成アカデミー</p>
+  <p>© 2026 Bi-hair Ikusei Academy. All rights reserved.</p>
+  <p style="margin-top:12px;">
+    <a href="bihair_academy_lp.htm
